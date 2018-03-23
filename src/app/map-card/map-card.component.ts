@@ -1,6 +1,5 @@
 import { Component, Input, OnInit, OnChanges, SimpleChange } from '@angular/core';
 import { tileLayer, latLng, Map, Layer, LatLngLiteral, LatLngTuple } from 'leaflet';
-
 import { ReplaySubject } from 'rxjs/ReplaySubject';
 
 import { Location } from '../location';
@@ -47,24 +46,26 @@ export class MapCardComponent implements OnInit, OnChanges {
 
     onMapReady(map: Map) {
         //this.map = map;
-      this.map$.next(map);
+        this.map$.next(map);
     }
 
     recenter() {
-        this.map.panTo(this.location.coords);
+        this.map$.subscribe((map) => {
+            map.panTo(this.location.coords);
+        });
     }
 
     changeContrast(contrast: string) {
         //if (this.map === undefined) return;
-      this.map$.subscribe((map)=>{
-        if (contrast === "high") {
-            if (!map.hasLayer(this.layers.contrast)) {
-                map.addLayer(this.layers.contrast);
+        this.map$.subscribe((map) => {
+            if (contrast === "high") {
+                if (!map.hasLayer(this.layers.contrast)) {
+                    map.addLayer(this.layers.contrast);
+                }
+            } else {
+                map.removeLayer(this.layers.contrast);
             }
-        } else {
-            map.removeLayer(this.layers.contrast);
-        }
-      });
+        });
     }
 
 }

@@ -2,15 +2,14 @@
   <mat-card-header>
     <mat-card-title>{{ location.name }}</mat-card-title>
   </mat-card-header>
-  <mat-card-content>
-    <div leaflet
-         style="height: 200px;"
-         [leafletOptions]="options"
-         (leafletMapReady)="onMapReady($event)">
-    </div>
-  </mat-card-content>
+  <div mat-card-image
+       leaflet
+       style="height: 200px;"
+       [leafletOptions]="options"
+       (leafletMapReady)="onMapReady($event)">
+  </div>
   <mat-card-actions>
-    <button mat-raised-button
+    <button mat-button
             (click)="recenter()">
       Re-center
     </button>
