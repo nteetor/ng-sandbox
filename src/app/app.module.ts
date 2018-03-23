@@ -1,11 +1,12 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { LeafletModule } from '@asymmetrik/ngx-leaflet';
-import { MatCardModule, MatGridListModule, MatButtonModule, MatButtonToggleModule } from '@angular/material';
+import { MatToolbarModule, MatCardModule, MatGridListModule, MatButtonModule, MatButtonToggleModule, MatIconModule } from '@angular/material';
 
 import { AppComponent } from './app.component';
 import { MapCardComponent } from './map-card/map-card.component';
 import { CardDeckComponent } from './card-deck/card-deck.component';
+import { NavService } from './nav.service';
 
 @NgModule({
     declarations: [
@@ -15,13 +16,17 @@ import { CardDeckComponent } from './card-deck/card-deck.component';
     ],
     imports: [
         BrowserModule,
+        MatToolbarModule,
         MatCardModule,
         MatGridListModule,
         MatButtonModule,
         MatButtonToggleModule,
+        MatIconModule,
         LeafletModule
     ],
-    providers: [],
+    providers: [
+        NavService
+    ],
     bootstrap: [AppComponent]
 })
 export class AppModule { }

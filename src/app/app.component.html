@@ -1,7 +1,10 @@
-<!--The content below is only a placeholder and can be replaced.-->
-<div style="text-align:center">
-  <h1>
-    Locations
-  </h1>
-  <app-card-deck></app-card-deck>
-</div>
+<mat-toolbar>
+  <span>Explore locations</span>
+  <span class="fill-remaining-space"></span>
+  <mat-icon class="clickable-icon"
+            aria-label="turn on high contrast for maps"
+            (click)="toggleHighContrast()">
+    tonality
+  </mat-icon>
+</mat-toolbar>
+<app-card-deck></app-card-deck>
