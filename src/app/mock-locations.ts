@@ -1,4 +1,4 @@
-import { Location } from './mock-locations';
+import { Location } from './location';
 
 export const LOCATIONS: Location[] = [
     { id: 1,
