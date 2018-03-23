@@ -24,7 +24,7 @@ export class MapCardComponent implements OnInit {
 	};
 
         let defaultOptions = {
-            layers: this.layers.street; //.keys().map(k => this.layers[k]),
+            layers: this.layers.street, //.keys().map(k => this.layers[k]),
             zoom: 8
         };
 
