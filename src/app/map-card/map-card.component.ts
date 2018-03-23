@@ -28,8 +28,7 @@ export class MapCardComponent implements OnInit {
     }
 
     ngOnInit() {
-      //TODO or make coords have type of LatLngTuple
-        this.options.center = latLng(this.location.coords as LatLngTuple);
+        this.options.center = this.location.coords;
     }
 
     onMapReady(map: Map) {
@@ -37,7 +36,7 @@ export class MapCardComponent implements OnInit {
     }
 
     recenter() {
-        this.map.panTo(latLng(this.location.coords as LatLngTuple));
+        this.map.panTo(this.location.coords);
     }
 
 }
