@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { tileLayer, latLng } from 'leaflet';
+import { Map, tileLayer, latLng } from 'leaflet';
 
 import { Location } from '../location';
 
@@ -11,6 +11,7 @@ import { Location } from '../location';
 export class MapCardComponent implements OnInit {
 
     private map: Map;
+    private options;
 
     @Input() location: Location;
 
