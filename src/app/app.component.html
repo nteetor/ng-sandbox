@@ -1,11 +1,15 @@
 <mat-toolbar>
   <span>Explore locations</span>
   <span class="fill-remaining-space"></span>
-  <mat-icon class="clickable-icon"
-            aria-label="turn on high contrast for maps"
-            (click)="toggleContrast()">
-    tonality
-  </mat-icon>
+  <button mat-mini-fab
+          [class.invert]="contrast === 'high'"
+          [disableRipple]="true">
+    <mat-icon class="clickable-icon"
+              aria-label="turn on high contrast for maps"
+              (click)="toggleContrast()">
+      tonality
+    </mat-icon>
+  </button>
 </mat-toolbar>
 <app-card-deck [contrast]="contrast">
 </app-card-deck>

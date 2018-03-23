@@ -5,3 +5,8 @@
 .clickable-icon {
   cursor: pointer;
 }
+
+.invert {
+  color: white;
+  background: rgba(0,0,0,.87);
+}
