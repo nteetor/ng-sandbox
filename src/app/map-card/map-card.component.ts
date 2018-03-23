@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Map, tileLayer, latLng } from 'leaflet';
+import { tileLayer, latLng, Map, LatLngLiteral, LatLngTuple } from 'leaflet';
 
 import { Location } from '../location';
 
@@ -11,7 +11,8 @@ import { Location } from '../location';
 export class MapCardComponent implements OnInit {
 
     private map: Map;
-    private options;
+
+    options:{[key:string]:any} = {};
 
     @Input() location: Location;
 
@@ -27,7 +28,8 @@ export class MapCardComponent implements OnInit {
     }
 
     ngOnInit() {
-        this.options.center = latLng(...this.location.coords);
+      //TODO or make coords have type of LatLngTuple
+        this.options.center = latLng(this.location.coords as LatLngTuple);
     }
 
     onMapReady(map: Map) {
@@ -35,7 +37,7 @@ export class MapCardComponent implements OnInit {
     }
 
     recenter() {
-        this.map.panTo(latLng(...this.location.coords));
+        this.map.panTo(latLng(this.location.coords as LatLngTuple));
     }
 
 }
