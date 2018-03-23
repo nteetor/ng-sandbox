@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 import { LOCATIONS } from '../mock-locations';
 
@@ -7,14 +7,12 @@ import { LOCATIONS } from '../mock-locations';
     templateUrl: './card-deck.component.html',
     styleUrls: ['./card-deck.component.css']
 })
-export class CardDeckComponent implements OnInit {
+export class CardDeckComponent {
 
     locations = LOCATIONS;
 
+    @Input() contrast: string;
+
     constructor() {
     }
-
-    ngOnInit() {
-    }
-
 }

@@ -3,8 +3,9 @@
   <span class="fill-remaining-space"></span>
   <mat-icon class="clickable-icon"
             aria-label="turn on high contrast for maps"
-            (click)="toggleHighContrast()">
+            (click)="toggleContrast()">
     tonality
   </mat-icon>
 </mat-toolbar>
-<app-card-deck></app-card-deck>
+<app-card-deck [contrast]="contrast">
+</app-card-deck>

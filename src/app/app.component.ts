@@ -6,5 +6,9 @@ import { Component } from '@angular/core';
     styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+    contrast = "low";
 
+    toggleContrast() {
+        this.contrast = this.contrast === "low" ? "high" : "low";
+    }
 }

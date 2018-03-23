@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, Input, OnInit, OnChanges, SimpleChange } from '@angular/core';
 import { tileLayer, latLng, Map, Layer, LatLngLiteral, LatLngTuple } from 'leaflet';
 
 import { Location } from '../location';
@@ -8,7 +8,7 @@ import { Location } from '../location';
     templateUrl: './map-card.component.html',
     styleUrls: ['./map-card.component.css']
 })
-export class MapCardComponent implements OnInit {
+export class MapCardComponent implements OnInit, OnChanges {
 
     private map: Map;
     private layers: {[key:string]:Layer};
@@ -16,6 +16,7 @@ export class MapCardComponent implements OnInit {
     options:{[key:string]:any} = {};
 
     @Input() location: Location;
+    @Input() contrast: string;
 
     constructor() {
         this.layers = {
@@ -35,12 +36,30 @@ export class MapCardComponent implements OnInit {
         this.options.center = this.location.coords;
     }
 
+    ngOnChanges(changes: {[key: string]: SimpleChange}) {
+        if (changes.contrast !== undefined) {
+            this.changeContrast(changes.contrast.currentValue);
+        }
+    }
+
     onMapReady(map: Map) {
         this.map = map;
     }
 
     recenter() {
         this.map.panTo(this.location.coords);
+    }
+
+    changeContrast(contrast: string) {
+        if (this.map === undefined) return;
+
+        if (contrast === "high") {
+            if (!this.map.hasLayer(this.layers.contrast)) {
+                this.map.addLayer(this.layers.contrast);
+            }
+        } else {
+            this.map.removeLayer(this.layers.contrast);
+        }
     }
 
 }
